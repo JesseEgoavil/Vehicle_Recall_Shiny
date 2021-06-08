@@ -26,6 +26,9 @@ vehicle_edit= vehicle_edit[vehicle_edit$Recall.Component != 'ENGINE',]
 vehicle2$Recall.Component = sub("ENGINE", "ENGINE AND ENGINE COOLING", vehicle2$Recall.Component)  
 vehicle_edit= rbind(vehicle_edit, vehicle2)
 
-vehicle_unique = vehicle_edit[c('NHTSA.Campaign', 'Estimated.Units', 'Recall.Notification.Date', 'Vehicle.Manufacturer','Recall.Component')]
+vehicle_unique = vehicle_edit[c('NHTSA.Campaign', 'Estimated.Units', 'Recall.Notification.Date', 'Vehicle.Make','Recall.Component')]
 vehicle_unique = distinct(vehicle_unique)
+vehicle_unique2 = vehicle_edit[c('NHTSA.Campaign', 'Model.Year', 'Recall.Notification.Date', 'Vehicle.Make','Recall.Component')]
+vehicle_unique2 = distinct(vehicle_unique2)
 vehicle_unique$Recall.Notification.Date =as.integer(format(vehicle_unique$Recall.Notification.Date, '%Y'))
+vehicle_unique2$Recall.Notification.Date =as.integer(format(vehicle_unique2$Recall.Notification.Date, '%Y'))
